@@ -3,7 +3,7 @@ require 'twitter'
 require 'sinatra'
 
 def list_data page
-   Twitter.list_timeline("sutterbomb","topsecret", options = {:include_entities => 1, :page => page})
+   Twitter.list_timeline("sutterbomb","topsecret", options = {:page => page})
 end
 
 def timeline_data page
