@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'twitter'
 require 'sinatra'
+require 'readability'
+require 'open-uri'
+require 'hpricot'
 
 def list_data page
    Twitter.list_timeline("sutterbomb","topsecret", options = {:page => page})
@@ -19,7 +22,17 @@ def get_the_best tweets
   @filtered_data = []
   tweets.each do |i|
     unless url_pull(i["text"]).empty? or i["retweet_count"] == 0
-      @filtered_data.push( [ i["text"], i["user"]["screen_name"] + ": " + i["user"]["name"], i["retweet_count"], url_pull(i["text"]) ] )
+  #    doc = Nokogiri::HTML(open(url_pull(i["text"]).to_s))
+  #    doc2 = doc.to_readable
+  #    title = doc2.search("//h1").first.inner_html
+#      summary = doc2.search("#readInner//p").first.inner_html
+      @filtered_data.push( [ i["text"], 
+                          i["user"]["screen_name"] + ": " + i["user"]["name"], 
+                          i["retweet_count"], 
+                          url_pull(i["text"])
+     #                     title
+ #                         summary
+                          ] )
     end
   end
   @filtered_data.sort! { |a,b| b[2] <=> a[2] }
