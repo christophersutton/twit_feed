@@ -1,2 +1,2 @@
-require './twit_feed'
+require 'twit_feed'
 run Sinatra::Application
