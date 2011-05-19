@@ -36,7 +36,7 @@ def get_the_best tweets
                           ] )
     end
   end
-  @filtered_data.sort! { |a,b| b[2] <=> a[2] }
+  @filtered_data.sort! { |a,b| b[3] <=> a[3] }
 end
 
 get '/' do
