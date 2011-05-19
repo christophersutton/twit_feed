@@ -22,12 +22,13 @@ def get_the_best tweets
   @filtered_data = []
   tweets.each do |i|
     unless url_pull(i["text"]).empty? or i["retweet_count"] == 0
-  #    doc = Nokogiri::HTML(open(url_pull(i["text"]).to_s))
-  #    doc2 = doc.to_readable
-  #    title = doc2.search("//h1").first.inner_html
+#      doc = Nokogiri::HTML(open(url_pull(i["text"]).to_s))
+#      doc2 = doc.to_readable
+#      title = doc2.search("//h1").first.inner_html
 #      summary = doc2.search("#readInner//p").first.inner_html
       @filtered_data.push( [ i["text"], 
-                          i["user"]["screen_name"] + ": " + i["user"]["name"], 
+                          i["user"]["screen_name"], 
+                          i["user"]["name"], 
                           i["retweet_count"], 
                           url_pull(i["text"])
      #                     title
@@ -41,11 +42,11 @@ end
 get '/' do
   full_data = list_data(1) + list_data(2) + list_data(3)
   get_the_best(full_data)
-  erb :testpartial
+  erb :home
 end  
 
 get '/:user' do
   full_data = timeline_data(1) + timeline_data(2) + timeline_data(3)
   get_the_best(full_data)
-  erb :testpartial
+  erb :user
 end
