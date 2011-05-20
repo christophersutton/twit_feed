@@ -1,6 +1,7 @@
 require 'rubygems'
-require 'twitter'
 require 'sinatra'
+require 'sinatra/content_for'
+require 'twitter'
 require 'readability'
 require 'open-uri'
 require 'hpricot'

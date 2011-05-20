@@ -30,12 +30,7 @@
 		
 	<meta http-equiv="x-dns-prefetch-control" content="off"/></head>
 	<body>
-		<div id="header">
-			<h1 class="blog">
-				<a href="http://chrissutton.me/">Chris Sutton</a> <span class="sub">presents</span> @<%= @filtered_data.first[1] %>
-			</h1>
-			<h3> The freshest links from <%= @filtered_data.first[2] %>, all in one place.</h3>
-		</div>
+		<% yield_content :header %>
 		<div id="navigation">
 			<ul class="button">
 				<li>
