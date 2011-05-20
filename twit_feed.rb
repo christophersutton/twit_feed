@@ -18,6 +18,19 @@ def url_pull text
   urls.each &:compact!
 end
 
+def link_urls_and_users text
+  url = /( |^)http:\/\/([^\s]*\.[^\s]*)( |$)/
+  user = /@(\w+)/
+  while text =~ user
+    text.sub! "@#{$1}", "<a href='http://twitter.com/#{$1}'>#{$1}</a>"
+  end
+  while text =~ url
+    name = $2
+    text.sub! /( |^)http:\/\/#{name}( |$)/, " <a href='http://#{name}' >#{name}</a> "
+  end
+  text
+end
+
 def get_the_best tweets
   @filtered_data = []
   tweets.each do |i|
@@ -26,13 +39,13 @@ def get_the_best tweets
 #      doc2 = doc.to_readable
 #      title = doc2.search("//h1").first.inner_html
 #      summary = doc2.search("#readInner//p").first.inner_html
-      @filtered_data.push( [ i["text"], 
+      @filtered_data.push( [ link_urls_and_users(i["text"]), 
                           i["user"]["screen_name"], 
                           i["user"]["name"], 
                           i["retweet_count"], 
-                          url_pull(i["text"])
-     #                     title
- #                         summary
+                        #  url_pull(i["text"])
+                        #  title
+                        #  summary
                           ] )
     end
   end
