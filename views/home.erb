@@ -1,9 +1,9 @@
 <% content_for :header do %>
 <div id="header">
-		<h1 class="blog">
-			<a href="http://chrissutton.me/">Chris Sutton</a> <span class="sub">presents</span> The Best Of
+		<h1>
+		The Best Of
 		</h1>
-		<h3> The freshest links from some of the best folks out there.</h3>
+		<h3> The freshest links from the best folks out there.</h3>
 	</div>
 <% end %>
 
@@ -12,5 +12,6 @@
 	<p><%= a[0] %></p>
 	<a href="http://twitter.com/<%= a[1] %>">@<%= a[1] %></a>
 <p class="timestamp"><%= a[3] %> Retweets</p>
+<a href="/read/<%= a[5] %>">Readability</a>
 </div>
 <% end %>
