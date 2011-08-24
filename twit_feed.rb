@@ -7,7 +7,7 @@ require 'open-uri'
 require 'nokogiri'
 
 def list_data 
-   Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 300, :include_entities => true})
+   Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
 end
 
 def timeline_data page
@@ -57,7 +57,6 @@ def get_the_best tweets
 end
 
 get '/' do
-  
   get_the_best(list_data)
   erb :home
 end  
