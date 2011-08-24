@@ -3,8 +3,8 @@ require 'bundler'
 require 'sinatra'
 require 'sinatra/content_for'
 require 'twitter'
-require 'open-uri'
-require 'nokogiri'
+#require 'open-uri'
+#require 'nokogiri'
 
 def list_data 
    Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
@@ -38,7 +38,13 @@ def get_the_best tweets
                           ] )
     end
   end
+  # TODO figure out why this chokes on the twitter data sometimes. 
+  # Using unsorted data for now if it fails.
+  begin
   @filtered_data.sort! { |a,b| b[3] <=> a[3] }
+  rescue
+  @filtered_data
+  end  
 end
 
 get '/' do
