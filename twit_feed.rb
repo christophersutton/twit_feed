@@ -14,21 +14,6 @@ def timeline_data page
    Twitter.user_timeline("#{params[:user]}", options = {:page => page, :include_entities => true})
 end
 
-def url_pull text
-  urls = text.scan %r{(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))}
-  urls.each &:compact!
-end
-
-def get_status 
-  tweet = Twitter.status("#{params[:status_id]}").text
-  url = url_pull(tweet).first.to_s
-  doc = Nokogiri::HTML(open(url))
-  doc2 = doc.to_readable
-  @title = doc2.search("//h1").first.inner_html
-  @summary = doc2.search("#readInner//p").first.inner_html
-  @doc = doc2
-end
-
 def link_urls_and_users text
   url = /( |^)http:\/\/([^\s]*\.[^\s]*)( |$)/
   user = /@(\w+)/
