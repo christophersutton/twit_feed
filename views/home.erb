@@ -1,16 +1,39 @@
-<% content_for :header do %>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!--<link rel="stylesheet" type="text/css" href="http://chrissutton.me/assets/sutton.css" />-->
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<title>The Best Of - Top Tweets</title>
+	<script type="text/javascript" language="Javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js"></script>
+	<script type="text/javascript" src="http://use.typekit.com/ckc1jjd.js"></script>
+	<script type="text/javascript">
+//<![CDATA[
+	try{Typekit.load();}catch(e){}
+	//]]>
+	</script>
+	<meta http-equiv="x-dns-prefetch-control" content="off"/></head>
+<body>
+
+
 <div id="header">
 		<h1>
 		The Best Of
 		</h1>
 		<h3> The freshest links from the best folks out there.</h3>
 	</div>
-<% end %>
+	<div id="content">
 
-<% @filtered_data.each do |a| %>
-<div class="article">
-	<h3><%= a[0] %></h3>
-	<a class="handle" href="http://twitter.com/<%= a[1] %>">@<%= a[1] %></a>
-<p class="rt"><%= a[3] %> Retweets</p>
+<div id="tweets">
+	
+	Load tweets
 </div>
-<% end %>
+<script>new Ajax.Updater('tweets', '/test', { method: 'get' });</script>
+<!--
+<%# @filtered_data.each do |a| %>
+<div class="article">
+	<h3><%#= a[0] %></h3>
+	<a class="handle" href="http://twitter.com/<%#= a[1] %>">@<%#= a[1] %></a>
+<p class="rt"><%#= a[3] %> Retweets</p>
+</div>
+<%# end %>
+-->
+	</div>
+</body>

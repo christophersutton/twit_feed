@@ -46,9 +46,14 @@ def get_the_best tweets
 end
 
 get '/' do
-  get_the_best(list_data)
+#  get_the_best(list_data)
   erb :home
 end  
+
+get '/test' do
+  get_the_best(list_data)
+  erb :test
+end
 
 get '/:user' do
   get_the_best(timeline_data)
