@@ -10,8 +10,8 @@ def list_data
    Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
 end
 
-def timeline_data page
-   Twitter.user_timeline("#{params[:user]}", options = {:page => page, :include_entities => true})
+def timeline_data 
+   Twitter.user_timeline("#{params[:user]}", options = {:count => 50, :include_entities => true})
 end
 
 def link_urls_and_users text
@@ -47,7 +47,6 @@ get '/' do
 end  
 
 get '/:user' do
-  full_data = timeline_data(1) + timeline_data(2) + timeline_data(3)
-  get_the_best(full_data)
+  get_the_best(timeline_data)
   erb :user
 end
