@@ -1,8 +1,10 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (3.0.7)
     addressable (2.2.6)
     dalli (1.0.4)
+    diff-lcs (1.1.2)
     envjs (0.3.7)
       johnson (>= 2.0.0.pre3)
     faraday (0.6.1)
@@ -28,9 +30,20 @@ GEM
     readability (0.1.5)
       harmony (~> 0.5)
       nokogiri (~> 1.4)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.4)
+    rspec-expectations (2.6.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
     ruby-readability (0.2.3)
       nokogiri (>= 1.4.2)
     simple_oauth (0.1.5)
+    simplecov (0.4.2)
+      simplecov-html (~> 0.4.4)
+    simplecov-html (0.4.5)
     sinatra (1.2.6)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
@@ -46,6 +59,8 @@ GEM
       multi_xml (~> 0.2.0)
       rash (~> 0.3.0)
       simple_oauth (~> 0.1.4)
+    twitter-text (1.4.9)
+      activesupport
 
 PLATFORMS
   ruby
@@ -53,8 +68,12 @@ PLATFORMS
 DEPENDENCIES
   dalli
   hpricot
+  nokogiri
   readability
+  rspec
   ruby-readability
+  simplecov
   sinatra
   sinatra-content-for
   twitter
+  twitter-text
