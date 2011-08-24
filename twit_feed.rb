@@ -3,8 +3,6 @@ require 'bundler'
 require 'sinatra'
 require 'sinatra/content_for'
 require 'twitter'
-#require 'open-uri'
-#require 'nokogiri'
 
 def list_data 
    Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
