@@ -1,8 +1,11 @@
+# encoding: utf-8
+
 require 'rubygems'
 require 'bundler'
 require 'sinatra'
 require 'sinatra/content_for'
 require 'twitter'
+require 'twitter-text'
 
 def list_data 
    Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
@@ -29,7 +32,7 @@ def get_the_best tweets
   @filtered_data = []
   tweets.each do |i|
     unless i["entities"]["urls"].empty? or i["retweet_count"] < 2
-      @filtered_data.push( [ link_urls_and_users(i["text"]), 
+      @filtered_data.push( [ i["text"], 
                           i["user"]["screen_name"], 
                           i["user"]["name"], 
                           i["retweet_count"], 
