@@ -7,23 +7,14 @@
 		<h3> The freshest links from the best folks out there.</h3>
 	</div>
 <div id="content">
-
-<div id="tweets">
-	<div id="spinner"></div>
-	<script>
-	var opts = {
-	  lines: 12, 
-	  length: 7, 
-	  width: 4, 
-	  radius: 10, 
-	  color: '#000', 
-	  speed: 1, 
-	  trail: 60, 
-	  shadow: false 
-	};
-	var target = document.getElementById('spinner');
-	var spinner = new Spinner(opts).spin(target);</script>
+	<div id="tweets">
+		<div id="spinner">
+		</div>
+		<script>
+			var target = document.getElementById('spinner');
+			var spinner = new Spinner().spin(target);
+			new Ajax.Updater('tweets', '/tweets', { method: 'get' });
+		</script>
 	</div>
-<script>new Ajax.Updater('tweets', '/tweets', { method: 'get' });</script>
 </div>
 </body>

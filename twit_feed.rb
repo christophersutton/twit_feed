@@ -46,7 +46,6 @@ def get_the_best tweets
 end
 
 get '/' do
-#  get_the_best(list_data)
   erb :home
 end  
 
