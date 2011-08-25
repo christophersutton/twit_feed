@@ -28,7 +28,7 @@ end
 def get_the_best tweets
   @filtered_data = []
   tweets.each do |i|
-    unless i["entities"]["urls"].empty? or i["retweet_count"] == 0
+    unless i["entities"]["urls"].empty? or i["retweet_count"] < 2
       @filtered_data.push( [ link_urls_and_users(i["text"]), 
                           i["user"]["screen_name"], 
                           i["user"]["name"], 
@@ -50,9 +50,9 @@ get '/' do
   erb :home
 end  
 
-get '/test' do
+get '/tweets' do
   get_the_best(list_data)
-  erb :test
+  erb :tweets
 end
 
 get '/:user' do

@@ -1,39 +1,29 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<!--<link rel="stylesheet" type="text/css" href="http://chrissutton.me/assets/sutton.css" />-->
-	<link rel="stylesheet" type="text/css" href="/css/style.css" />
-	<title>The Best Of - Top Tweets</title>
-	<script type="text/javascript" language="Javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js"></script>
-	<script type="text/javascript" src="http://use.typekit.com/ckc1jjd.js"></script>
-	<script type="text/javascript">
-//<![CDATA[
-	try{Typekit.load();}catch(e){}
-	//]]>
-	</script>
-	<meta http-equiv="x-dns-prefetch-control" content="off"/></head>
+<%= erb :head %>
 <body>
-
-
 <div id="header">
 		<h1>
 		The Best Of
 		</h1>
 		<h3> The freshest links from the best folks out there.</h3>
 	</div>
-	<div id="content">
+<div id="content">
 
 <div id="tweets">
-	
-	Load tweets
-</div>
-<script>new Ajax.Updater('tweets', '/test', { method: 'get' });</script>
-<!--
-<%# @filtered_data.each do |a| %>
-<div class="article">
-	<h3><%#= a[0] %></h3>
-	<a class="handle" href="http://twitter.com/<%#= a[1] %>">@<%#= a[1] %></a>
-<p class="rt"><%#= a[3] %> Retweets</p>
-</div>
-<%# end %>
--->
+	<div id="spinner"></div>
+	<script>
+	var opts = {
+	  lines: 12, 
+	  length: 7, 
+	  width: 4, 
+	  radius: 10, 
+	  color: '#000', 
+	  speed: 1, 
+	  trail: 60, 
+	  shadow: false 
+	};
+	var target = document.getElementById('spinner');
+	var spinner = new Spinner(opts).spin(target);</script>
 	</div>
+<script>new Ajax.Updater('tweets', '/tweets', { method: 'get' });</script>
+</div>
 </body>
