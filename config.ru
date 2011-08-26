@@ -1,4 +1,4 @@
-require 'rubygems' , "~> 1.9.2"
+require 'rubygems' 
 require 'bundler'
 
 Bundler.require
