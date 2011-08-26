@@ -17,6 +17,17 @@ def username_data
    Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
 end
 
+# Twitter stops counting after 100 RTs, so I'm changing all '100+' counts to 100 in
+# order to sort, then stuffing the '+' back in at the view. Probably a better way 
+# to do this, but it should work for now. 
+def rt_to_num rt_count
+  if rt_count == '100+'
+    100
+  else
+    rt_count
+  end
+end
+
 def get_the_best tweets
   @filtered_data = []
   tweets.each do |i|
@@ -24,7 +35,7 @@ def get_the_best tweets
       @filtered_data.push( [ Twitter.auto_link(i["text"], options = {:username_class => 'test'}), 
                           i["user"]["screen_name"], 
                           i["user"]["name"], 
-                          i["retweet_count"],
+                          rt_to_num(i["retweet_count"]),
                           i["user"]["profile_image_url"],
                           i["user"]["name"],
                           ] )

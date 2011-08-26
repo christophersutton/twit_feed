@@ -6,8 +6,13 @@
 <div class="photo"><img src="<%= a[4] %>" alt="" width="48" height="48" border="0" /></div>
 <div class="contents">	<p><a class="handle" href="http://twitter.com/<%= a[1] %>"><%= a[1] %> </a><span class ="name"><%= a[5] %></p>
 		<p><%= a[0] %></p>
-	<p class="rt"><%= a[3] %> Retweets</p>
-	</div>
+	<p class="rt">
+<% if a[3] == 100 %>
+	100+ RT
+<% else %>
+	<%= a[3] %> RT</p>
+<% end %>
+</div>
 </div>
 <% end %>
 <% end %>
