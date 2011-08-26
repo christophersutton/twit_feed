@@ -5,4 +5,3 @@ gem 'sinatra-content-for'
 gem 'dalli'
 gem 'rspec'
 gem "twitter-text", "~> 1.4.9"
-gem 'shotgun'
