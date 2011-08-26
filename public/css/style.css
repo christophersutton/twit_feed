@@ -140,10 +140,7 @@ a:hover { color: #144e64; }
 
 .handle {text-decoration:none;}
 
-#00a3c3
-#2cbda2
-#144e64
-
+a.username:before {color:black;}
 
 
 
