@@ -96,14 +96,13 @@ button {  width: auto; overflow: visible; }
  */
 
 body, select, input, textarea { 
-  color: #68667B; 
+  color: #444; 
   font-family: droid-sans-1, droid-sans2, helvetica, arial, sans-serif;
 }
 
 body {
 	margin: 0px auto; 
 	width:480px;
-	background-color:#E4E4E4;
 	padding:10px;
 	}
 
@@ -121,13 +120,6 @@ h3 {
 .article {
 	margin-top:20px;
 	padding:15px;
-	border:1px solid #68667B;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 0px 0px 4px #ddd;
-	-webkit-box-shadow: 4px 4px 4px #bbb;
-	box-shadow: 2px 2px 2px #aaa, -1px -1px 2px #aaa;
 	max-width:500px;
 }
 
@@ -144,9 +136,10 @@ a.username:before {color:black;}
 
 p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
 
-
-
-
+.photo {float:left;}
+.handle {font-weight:bold;font-size:1.3em;}
+.name {color:#777;}
+.contents {margin-left:60px;}
 
 
 /*
