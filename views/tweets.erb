@@ -4,7 +4,7 @@
 <% @filtered_data.each do |a| %>
 <div class="article">
 	<h3><%= a[0] %></h3>
-	<a class="handle" href="http://twitter.com/<%= a[1] %>">@<%= a[1] %></a>
+<div><img src="<%= a[4] %>" alt="" width="" height="" border="0" />	<a class="handle" href="http://twitter.com/<%= a[1] %>">@<%= a[1] %></a><p><%= a[5] %></p></div>
 	<p class="rt"><%= a[3] %> Retweets</p>
 </div>
 <% end %>

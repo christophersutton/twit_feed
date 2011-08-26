@@ -24,7 +24,9 @@ def get_the_best tweets
       @filtered_data.push( [ Twitter.auto_link(i["text"], options = {:username_class => 'test'}), 
                           i["user"]["screen_name"], 
                           i["user"]["name"], 
-                          i["retweet_count"], 
+                          i["retweet_count"],
+                          i["user"]["profile_image_url"],
+                          i["user"]["name"],
                           ] )
     end
   end
