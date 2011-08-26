@@ -13,7 +13,7 @@
 		<script>
 			var target = document.getElementById('spinner');
 			var spinner = new Spinner().spin(target);
-			new Ajax.Updater('tweets', '/', { method: 'post' });
+			new Ajax.Updater('tweets', "#{params[:username]}", { method: 'post' });
 		</script>
 	</div>
 </div>

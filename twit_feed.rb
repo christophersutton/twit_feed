@@ -6,12 +6,16 @@ require 'twitter'
 require 'twitter-text'
 include Twitter::Autolink
 
-def list_data 
+def homepage_data 
    Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
 end
 
-def timeline_data 
-   Twitter.user_timeline("#{params[:user]}", options = {:count => 50, :include_entities => true})
+def list_data 
+   Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
+end
+
+def username_data 
+   Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
 end
 
 def get_the_best tweets
@@ -39,17 +43,25 @@ get '/' do
   erb :home
 end  
 
-get '/list' do
+post '/' do
+  get_the_best(homepage_data)
+  erb :tweets
+end
+
+get '/:username' do
+  erb :username
+end
+
+post '/:username' do
+  get_the_best(username_data)
+  erb :tweets
+end
+
+get '/:username/:list' do
+ erb :list
+end
+
+post '/:username/:list' do
   get_the_best(list_data)
   erb :tweets
 end
-
-get '/:user' do
-  erb :user
-end
-
-post '/:user' do
-  get_the_best(timeline_data)
-  erb :tweets
-end
-
