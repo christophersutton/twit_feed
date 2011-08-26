@@ -4,7 +4,6 @@ require 'sinatra'
 require 'sinatra/content_for'
 require 'twitter'
 require 'twitter-text'
-
 include Twitter::Autolink
 
 def list_data 
@@ -20,7 +19,7 @@ def get_the_best tweets
   
   tweets.each do |i|
     unless i["entities"]["urls"].empty? or i["retweet_count"] < 2
-      @filtered_data.push( [ Twitter.auto_link(i["text"]), 
+      @filtered_data.push( [ Twitter.auto_link(i["text"], options = {:username_class => 'test'}), 
                           i["user"]["screen_name"], 
                           i["user"]["name"], 
                           i["retweet_count"], 
@@ -40,12 +39,17 @@ get '/' do
   erb :home
 end  
 
-get '/tweets' do
+get '/list' do
   get_the_best(list_data)
   erb :tweets
 end
 
 get '/:user' do
-  get_the_best(timeline_data)
   erb :user
 end
+
+post '/:user' do
+  get_the_best(timeline_data)
+  erb :tweets
+end
+

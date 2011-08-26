@@ -1,16 +1,20 @@
-<% content_for :header do %>
+<%= erb :head %>
+<body>
 <div id="header">
 		<h1>
 		The Best Of
 		</h1>
-		<h3> The freshest links from <%= @filtered_data.first[2] %>, all in one place.</h3>
+		<h3> The freshest links from the best folks out there.</h3>
 	</div>
-<% end %>
-
-<% @filtered_data.each do |a| %>
-<div class="article">
-	<h3><%= a[0] %></h3>
-<p class="rt"><%= a[3] %> Retweets</p>
+<div id="content">
+	<div id="tweets">
+		<div id="spinner">
+		</div>
+		<script>
+			var target = document.getElementById('spinner');
+			var spinner = new Spinner().spin(target);
+			new Ajax.Updater('tweets', "#{params[:user]}", { method: 'post' });
+		</script>
+	</div>
 </div>
-<% end %>
-
+</body>
