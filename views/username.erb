@@ -3,11 +3,8 @@
 	<%= erb :header %>
 <div id="content">
 	<div id="tweets">
-		<div id="spinner">
-		</div>
+		<%= erb :spinner %>
 		<script>
-			var target = document.getElementById('spinner');
-			var spinner = new Spinner().spin(target);
 			new Ajax.Updater('tweets', "#{params[:username]}", { method: 'post' });
 		</script>
 	</div>

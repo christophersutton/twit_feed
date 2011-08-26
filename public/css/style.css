@@ -142,7 +142,7 @@ a:hover { color: #144e64; }
 
 a.username:before {color:black;}
 
-
+p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
 
 
 

@@ -3,13 +3,10 @@
 	<%= erb :header %>
 <div id="content">
 	<div id="tweets">
-		<div id="spinner">
-		</div>
-		<script>
-			var target = document.getElementById('spinner');
-			var spinner = new Spinner().spin(target);
+	<%= erb :spinner %>
+	<script>
 			new Ajax.Updater('tweets', '/', { method: 'post' });
-		</script>
+	</script>
 	</div>
 </div>
 </body>
