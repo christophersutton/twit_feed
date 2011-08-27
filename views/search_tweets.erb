@@ -1,0 +1,12 @@
+<% if @filtered_data.empty? %>
+<p>Nothing to see here, folks. </p>
+<% else %>
+<% @filtered_data.each do |a| %>
+<div class  = "article">
+	<div class = "photo"><img src="<%= a[2] %>" alt="" width="48" height="48" border="0" /></div>
+	<div class = "contents">	<p><a class="handle" href="http://twitter.com/<%= a[1] %>"><%= a[1] %> </a></p>
+		<p><%= a[0] %></p>
+	</div>
+</div>
+<% end %>
+<% end %>

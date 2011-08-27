@@ -27,7 +27,10 @@ def username_data
 end
 
 def hashtag_data
-  Twitter::Search.new.hashtag("#{params[:hashtag]}").filter.fetch
+  begin
+  Twitter::Search.new.hashtag("#{params[:term]}").filter.fetch
+rescue
+end
 end
 
 # Twitter stops counting after 100 RTs, so I'm changing all '100+' counts to 100 in
@@ -49,6 +52,20 @@ else
 	end
 end
 
+def get_the_best_search tweets
+  @filtered_data = []
+  unless tweets.nil?
+    tweets.each do |i|
+      unless URI.extract(i["text"]).empty? 
+        @filtered_data.push( [ Twitter.auto_link(i["text"], options = {:username_class => 'test'}), 
+        i["from_user"], 
+        i["profile_image_url"],
+        ] )
+      end
+    end
+  end
+end
+
 def get_the_best tweets
   @filtered_data = []
   unless tweets.nil?
@@ -59,7 +76,6 @@ def get_the_best tweets
         i["user"]["name"], 
         rt_to_num(i["retweet_count"]),
         i["user"]["profile_image_url"],
-        i["user"]["name"],
         ] )
       end
     end
@@ -87,24 +103,25 @@ get '/:username' do
 end
 
 post '/:username' do
-  get_the_best(username_data)
   erb :tweets
 end
 
 get '/:username/:list' do
+  pass if params[:username] == 'hashtag'
   erb :list
 end
 
 post '/:username/:list' do
+  pass if params[:username] == 'hashtag'
   get_the_best(list_data)
   erb :tweets
 end
 
-#get '/h/:hashtag' do
-# erb :hashtag
-#end
+get '/hashtag/:term' do
+ erb :hashtag
+end
 
-#post '/h/:hashtag' do
-#  get_the_best(hashtag_data)
-#  erb :tweets
-#end
+post '/hashtag/:term' do
+  get_the_best_search(hashtag_data)
+  erb :search_tweets
+end

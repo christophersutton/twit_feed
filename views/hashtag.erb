@@ -1,0 +1,13 @@
+<%= erb :head %>
+<body>
+	<%= erb :header %>
+	<div id="content">
+		<div id="tweets">
+			<p><%= params[:term] %></p>
+			<%= erb :spinner %>
+			<script>
+			new Ajax.Updater('tweets', "#{params[:term]}", { method: 'post' });
+			</script>	
+		</div> 
+		</div>
+	</body>

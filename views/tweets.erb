@@ -4,7 +4,7 @@
 <% @filtered_data.each do |a| %>
 <div class  = "article">
 	<div class = "photo"><img src="<%= a[4] %>" alt="" width="48" height="48" border="0" /></div>
-	<div class = "contents">	<p><a class="handle" href="http://twitter.com/<%= a[1] %>"><%= a[1] %> </a><span class ="name"><%= a[5] %></p>
+	<div class = "contents">	<p><a class="handle" href="http://twitter.com/<%= a[1] %>"><%= a[1] %> </a><span class ="name"><%= a[2] %></p>
 		<p><%= a[0] %></p>
 		<p class  = "rt"><%= rt_count(a[3]) %></p>
 	</div>
