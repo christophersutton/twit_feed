@@ -51,9 +51,7 @@ end
 
 def get_the_best tweets
   @filtered_data = []
-  if tweets.nil?
-    @filtered_data
-  else
+  unless tweets.nil?
     tweets.each do |i|
       unless i["entities"]["urls"].empty? or i["retweet_count"] == 0
         @filtered_data.push( [ Twitter.auto_link(i["text"], options = {:username_class => 'test'}), 
