@@ -59,7 +59,6 @@ def get_the_best tweets
         i["user"]["name"], 
         rt_to_num(i["retweet_count"]),
         i["user"]["profile_image_url"],
-        i["user"]["name"],
         ] )
       end
     end
