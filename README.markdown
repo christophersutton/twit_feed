@@ -5,3 +5,4 @@ A small Ruby app powered by Sinatra that takes a Twitter list timeline and retur
 #### TODO ####
 *  Rescue private lists
 *  Add 404 and 500 pages
+*  Fix Twitter:NotFound for missing data

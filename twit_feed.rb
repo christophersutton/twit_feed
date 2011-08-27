@@ -6,15 +6,28 @@ require 'twitter-text'
 include Twitter::Autolink
 
 def homepage_data 
-   Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
+  begin
+    Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
+  rescue 
+  end
 end
 
 def list_data 
-   Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
+  begin
+    Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
+  rescue 
+  end
 end
 
 def username_data 
-   Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
+  begin
+    Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
+  rescue 
+  end
+end
+
+def hashtag_data
+  Twitter::Search.new.hashtag("#{params[:hashtag]}").filter.fetch
 end
 
 # Twitter stops counting after 100 RTs, so I'm changing all '100+' counts to 100 in
@@ -30,24 +43,28 @@ end
 
 def get_the_best tweets
   @filtered_data = []
-  tweets.each do |i|
-    unless i["entities"]["urls"].empty? or i["retweet_count"] == 0
-      @filtered_data.push( [ Twitter.auto_link(i["text"], options = {:username_class => 'test'}), 
-                          i["user"]["screen_name"], 
-                          i["user"]["name"], 
-                          rt_to_num(i["retweet_count"]),
-                          i["user"]["profile_image_url"],
-                          i["user"]["name"],
-                          ] )
-    end
-  end
-  # TODO figure out why this chokes on the twitter data sometimes. 
-  # Using unsorted data for now if it fails.
-  begin
-    @filtered_data.sort! { |a,b| b[3] <=> a[3] }
-  rescue
+  if tweets.nil?
     @filtered_data
-  end  
+  else
+    tweets.each do |i|
+      unless i["entities"]["urls"].empty? or i["retweet_count"] == 0
+        @filtered_data.push( [ Twitter.auto_link(i["text"], options = {:username_class => 'test'}), 
+        i["user"]["screen_name"], 
+        i["user"]["name"], 
+        rt_to_num(i["retweet_count"]),
+        i["user"]["profile_image_url"],
+        i["user"]["name"],
+        ] )
+      end
+    end
+    # TODO figure out why sorting chokes on the twitter data sometimes. 
+    # Using unsorted data for now if it fails.
+    begin
+      @filtered_data.sort! { |a,b| b[3] <=> a[3] }
+    rescue
+      @filtered_data
+    end  
+  end
 end
 
 get '/' do
@@ -69,10 +86,19 @@ post '/:username' do
 end
 
 get '/:username/:list' do
- erb :list
+  erb :list
 end
 
 post '/:username/:list' do
   get_the_best(list_data)
   erb :tweets
 end
+
+#get '/h/:hashtag' do
+# erb :hashtag
+#end
+
+#post '/h/:hashtag' do
+#  get_the_best(hashtag_data)
+#  erb :tweets
+#end
