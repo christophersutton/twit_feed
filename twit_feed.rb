@@ -99,12 +99,3 @@ post '/:username/:list' do
   get_the_best(list_data)
   erb :tweets
 end
-
-#get '/h/:hashtag' do
-# erb :hashtag
-#end
-
-#post '/h/:hashtag' do
-#  get_the_best(hashtag_data)
-#  erb :tweets
-#end

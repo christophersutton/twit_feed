@@ -1,6 +1,6 @@
 ## Twit Feed ##
 
-A small Ruby app powered by Sinatra that takes a Twitter list timeline and returns the best tweets with links as ranked by the number of retweets.
+Take a Twitter timeline from a user or a list and return the best links, as ranked by the number of retweets. Since the search API doesn't offer RT counts at the moment, we aren't able to do the same for hashtags or searches.
 
 #### TODO ####
 *  Rescue private lists
