@@ -141,6 +141,10 @@ p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
 .name {color:#777;}
 .contents {margin-left:60px;}
 
+.headline p.text {font-size:1.6em;}
+.primary {font-size:1.1em;}
+.secondary {font-size:1.0em;}
+.tertiary {font-size:.9em;}
 
 /*
  * Media queries for responsive design

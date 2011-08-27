@@ -26,6 +26,7 @@ def username_data
   end
 end
 
+# Not in use curerntly because Twitter search doesn't support RT count
 def hashtag_data
   Twitter::Search.new.hashtag("#{params[:hashtag]}").filter.fetch
 end
@@ -47,6 +48,18 @@ def rt_count rt_num
 else 
   	rt_num.to_s + ' RT'
 	end
+end
+
+def rt_class_setter rt_count
+  if rt_count == '100+'
+    'Headline'
+  elsif rt_count > 50
+    'Primary'
+  elsif rt_count > 10
+    'Secondary'
+  else
+    'Tertiary'
+  end
 end
 
 def get_the_best tweets
