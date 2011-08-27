@@ -41,6 +41,14 @@ def rt_to_num rt_count
   end
 end
 
+def rt_count rt_num
+  if rt_num == 100 
+    '100+ RT'
+else 
+  	rt_num.to_s + ' RT'
+	end
+end
+
 def get_the_best tweets
   @filtered_data = []
   if tweets.nil?
