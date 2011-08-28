@@ -16,7 +16,11 @@
 	<div id="tweets">
 		<%= erb :spinner %>
 		<script>
-			new Ajax.Updater('tweets', "#{params[:username]}", { method: 'post' });
+			new Ajax.Updater('tweets', "#{params[:username]}", { 
+				method: 'post',
+				parameters: { type: 'user' },
+				
+				});
 		</script>
 	</div>
 </div>

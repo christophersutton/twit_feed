@@ -17,7 +17,8 @@
 			<%= erb :spinner %>
 			<script>
 			new Ajax.Updater('tweets', "#{params[:username]}/#{params[:list]}", { 
-				method: 'post'
+				method: 'post',
+				parameters: { type: 'list' }
 			});
 			</script>
 				</div>	

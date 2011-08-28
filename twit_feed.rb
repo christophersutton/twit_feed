@@ -15,28 +15,25 @@ end
 def description
   begin
     if params[:description] == 'user'
-    user = Twitter.user("#{params[:username]}")
-    @headline = "<a href=\"http://twitter.com/" + user["screen_name"] + "\">@" + user["screen_name"] + "</a>"
-    @description = Twitter.auto_link(user["description"])
-  else
-    list = Twitter.list("#{params[:username]}","#{params[:list]}")
-    @headline = "<a href=\"http://twitter.com" + list["uri"] + "\">" + list["full_name"] + "</a>"
-    @description = Twitter.auto_link(list["description"])
-  end
+      user = Twitter.user("#{params[:username]}")
+      @headline = "<a href=\"http://twitter.com/" + user["screen_name"] + "\">@" + user["screen_name"] + "</a>"
+      @description = Twitter.auto_link(user["description"])
+    else
+      list = Twitter.list("#{params[:username]}","#{params[:list]}")
+      @headline = "<a href=\"http://twitter.com" + list["uri"] + "\">" + list["full_name"] + "</a>"
+      @description = Twitter.auto_link(list["description"])
+    end
   rescue
   end
 end
 
-def list_data 
+def tweets 
   begin
-    Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
-  rescue 
-  end
-end
-
-def username_data 
-  begin
-    Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
+    if params[:type] == 'list'
+      Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
+    elsif params[:type] == 'user'
+      Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
+    end
   rescue 
   end
 end
@@ -109,9 +106,9 @@ post '/:username' do
     description
     erb :description
   else
-  get_the_best(username_data)
-  erb :tweets
-end
+    get_the_best(tweets)
+    erb :tweets
+  end
 end
 
 get '/:username/:list' do
@@ -123,7 +120,7 @@ post '/:username/:list' do
     description
     erb :description
   else  
-    get_the_best(list_data)
+    get_the_best(tweets)
     erb :tweets
   end
 end
