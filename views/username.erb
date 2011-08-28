@@ -7,7 +7,7 @@
 				<script>
 				new Ajax.Updater('description', "#{params[:username]}", { 
 					method: 'post', 
-					parameters: { description: 'yes' },
+					parameters: { description: 'user' },
 					onSuccess: function(){new Effect.Appear('description', {duration: 0.3 });}
 				});
 				</script>

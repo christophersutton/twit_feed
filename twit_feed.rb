@@ -14,19 +14,16 @@ end
 
 def description
   begin
+    if params[:description] == 'user'
     user = Twitter.user("#{params[:username]}")
-    @user_link = "<a href=\"http://twitter.com/" + user["screen_name"] + "\">@" + user["screen_name"] + "</a>"
-    @user_description = Twitter.auto_link(user["description"])
-  rescue
-  end
-end
-
-def list_description 
-  begin
+    @headline = "<a href=\"http://twitter.com/" + user["screen_name"] + "\">@" + user["screen_name"] + "</a>"
+    @description = Twitter.auto_link(user["description"])
+  else
     list = Twitter.list("#{params[:username]}","#{params[:list]}")
-    @list_link = "<a href=\"http://twitter.com" + list["uri"] + "\">" + list["full_name"] + "</a>"
-    @list_description = Twitter.auto_link(list["description"])
-  rescue 
+    @headline = "<a href=\"http://twitter.com" + list["uri"] + "\">" + list["full_name"] + "</a>"
+    @description = Twitter.auto_link(list["description"])
+  end
+  rescue
   end
 end
 
@@ -108,9 +105,9 @@ get '/:username' do
 end
 
 post '/:username' do
-  if params[:description] == 'yes'
+  if params[:description] == 'user'
     description
-    erb :user_description
+    erb :description
   else
   get_the_best(username_data)
   erb :tweets
@@ -122,9 +119,9 @@ get '/:username/:list' do
 end
 
 post '/:username/:list' do
-  if params[:description] == 'yes'
-    list_description
-    erb :list_description
+  if params[:description] == 'list'
+    description
+    erb :description
   else  
     get_the_best(list_data)
     erb :tweets
