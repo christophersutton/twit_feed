@@ -15,8 +15,8 @@ end
 def description
   begin
     user = Twitter.user("#{params[:username]}")
-    @username = user["screen_name"]
-    @user_description = user ["description"]
+    @user_link = "<a href=\"http://twitter.com/" + user["screen_name"] + "\">@" + user["screen_name"] + "</a>"
+    @user_description = Twitter.auto_link(user["description"])
   rescue
   end
 end
@@ -24,9 +24,8 @@ end
 def list_description 
   begin
     list = Twitter.list("#{params[:username]}","#{params[:list]}")
-    @uri = list["uri"]
-    @full_name = list["full_name"]
-    @list_description = list["description"]
+    @list_link = "<a href=\"http://twitter.com" + list["uri"] + "\">" + list["full_name"] + "</a>"
+    @list_description = Twitter.auto_link(list["description"])
   rescue 
   end
 end

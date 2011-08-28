@@ -159,18 +159,24 @@ ul, li {
 	margin:12px 0px 25px 0px;
 }
 
+h2 {
+	font-size:2em;
+	margin-top:11px;
+}
+
 #description p {
 	color:#999;
 	font-size:1.2em;
 	margin-top:5px;
 }
 
-h2 a {
-	font-size:2em;
+#description a {
 	color:#999;
-	margin-top:11px;
 	text-decoration:none;
 }
+
+#description a:hover { color: #144e64; }
+
 
 p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
 
