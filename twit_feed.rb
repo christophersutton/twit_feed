@@ -12,6 +12,13 @@ def homepage_data
   end
 end
 
+def list_description 
+  begin
+    @description = Twitter.list("#{params[:username]}","#{params[:list]}")["description"]
+  rescue 
+  end
+end
+
 def list_data 
   begin
     Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
@@ -24,10 +31,6 @@ def username_data
     Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
   rescue 
   end
-end
-
-def hashtag_data
-  Twitter::Search.new.hashtag("#{params[:hashtag]}").filter.fetch
 end
 
 # Twitter stops counting after 100 RTs, so I'm changing all '100+' counts to 100 in
@@ -103,6 +106,12 @@ get '/:username/:list' do
 end
 
 post '/:username/:list' do
+  if params[:description] == 'yes'
+  list_description
+  erb :description
+  else  
   get_the_best(list_data)
   erb :tweets
 end
+end
+
