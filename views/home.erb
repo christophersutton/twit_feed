@@ -1,6 +1,6 @@
 <%= erb :head %>
 <body>
-	<%= erb :header %>
+	<%= erb :sidebar %>
 <div id="content">
 	<div id="tweets">
 	<%= erb :spinner %>
@@ -8,5 +8,6 @@
 			new Ajax.Updater('tweets', '/', { method: 'post' });
 	</script>
 	</div>
+
 </div>
 </body>

@@ -1,12 +1,13 @@
 <%= erb :head %>
 <body>
-	<%= erb :header %>
+	<%= erb :sidebar %>
 <div id="content">
+	<h2>	<a href="http://twitter.com/<%= params[:username] %>/<%= params[:list] %>">@<%= params[:username] %>/<%= params[:list] %></a></h2>
 	<div id="tweets">
 		<%= erb :spinner %>
 		<script>
 			new Ajax.Updater('tweets', "#{params[:username]}/#{params[:list]}", { method: 'post' });
 		</script>
-	</div>
+	</div>	
 </div>
 </body>

@@ -95,80 +95,163 @@ button {  width: auto; overflow: visible; }
     Author: 
  */
 
+/*		Default Layout: 992px. 
+		Gutters: 24px.
+		Outer margins: 48px.
+		Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+
+body {
+	width: 896px;
+	padding: 72px 48px 84px;
+	margin: 0px auto; 
+	background: url('/full-background.png');
+	color: rgb(60,60,60);
+	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+}
+
 body, select, input, textarea { 
-  color: #444; 
   font-family: droid-sans-1, droid-sans2, helvetica, arial, sans-serif;
 }
 
-body {
-	margin: 0px auto; 
-	width:480px;
-	padding:10px;
-	}
-
-h1 {
-	font-size:4em;
-	margin-top:50px;
-	}
-
-h3 {
-	font-size:1.6em;
-	font-weight:normal;
-	margin-bottom:15px;
-	}
-
-.article {
-	margin-top:20px;
-	padding:15px;
-	max-width:500px;
-}
-
 a:hover, a:active { outline: none; }
-a, a:active, a:visited { color: #00a3c3; }
+a { color: #00a3c3; }
 a:hover { color: #144e64; }
 
-.rt {float:right;}
-.rt p {padding-bottom:10px;}
+h1 {
+	font-size:3em;
+	}
 
-.handle {text-decoration:none;}
+h2 a {
+	font-size:2em;
+	color:#999;
+	margin-top:12px;
+	text-decoration:none;
+}
 
-a.username:before {color:black;}
+h3 {
+	text-transform:uppercase;
+	font-weight:normal;
+	font-size:1.3em;
+	padding:5px;
+	margin-bottom:10px;
+	background-color:#f2f2f0;
+	}
+
+aside {
+	width:252;
+	float:left;
+	margin-right:24px;
+}
+
+aside a {
+	text-decoration:none;
+	font-size:1.1em;
+}
+
+aside p {
+	margin-bottom:30px;
+	}
+
+ul, li {
+	list-style-type:none;
+	margin-left:0px;
+	margin-bottom:7px;
+}
 
 p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
 
+ #content {
+	margin-left:20px;
+}
+
+#tweets {
+	float:left;
+	width:620px;
+}
+
+.tweet {
+	margin-bottom:20px;
+	padding:15px 0px;
+}
+
+.handle {text-decoration:none;}
+a.username:before {color:black;}
 .photo {float:left;}
 .handle {font-weight:bold;font-size:1.3em;}
 .name {color:#777;}
-.contents {margin-left:60px;}
+.contents {
+	float:left;
+	width:436px;
+	margin-left:10px;
+	}
 
+.rt {
+	float:right;
+	background-color:#f2f2f0;
+}
+p.rt  {
+	padding:15px;
+	font-size:1.1em;
+	}
 
-/*
- * Media queries for responsive design
- * These follow after primary styles so they will successfully override. 
- */
+/*		Tablet Layout: 768px.
+		Gutters: 24px.
+		Outer margins: 28px.
+		Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    
 
-@media all and (orientation:portrait) { 
-  /* Style adjustments for portrait mode goes here */ 
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+	body {
+		width: 712px;
+		padding: 48px 28px 60px;
+	}
 }
 
-@media all and (orientation:landscape) { 
-  /* Style adjustments for landscape mode goes here */
+
+
+/*		Mobile Layout: 320px.
+		Gutters: 24px.
+		Outer margins: 34px.
+		Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    
+
+@media only screen and (max-width: 767px) {
+
+	body {
+		width: 252px;
+		padding: 48px 34px 60px;
+	}
+
 }
 
-/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
-   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
-@media screen and (max-device-width: 480px) {
-  
-  
-  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you
-     j.mp/textsizeadjust 
-  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
-}
 
-/* 
- * print styles
- * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/ 
- */
+
+/*		Wide Mobile Layout: 480px.
+		Gutters: 24px.
+		Outer margins: 22px.
+		Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+	body {
+		width: 436px;
+		padding: 36px 22px 48px;
+	}
+
+}
+*/
+
 @media print {
   * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
   a, a:visited { color: #444 !important; text-decoration: underline; }

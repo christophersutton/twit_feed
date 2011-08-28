@@ -49,6 +49,14 @@ else
 	end
 end
 
+def rt_highlight rt_count
+  if rt_count == '100+'
+    1
+  else
+    rt_count.to_f / 100
+  end
+end
+
 def get_the_best tweets
   @filtered_data = []
   unless tweets.nil?
