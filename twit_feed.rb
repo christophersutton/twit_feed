@@ -47,9 +47,9 @@ end
 def rt_count rt_num
   if rt_num == 100 
     '100+ RT'
-else 
-  	rt_num.to_s + ' RT'
-	end
+  else 
+    rt_num.to_s + ' RT'
+  end
 end
 
 def rt_highlight rt_count
@@ -73,7 +73,7 @@ def get_the_best tweets
         ] )
       end
     end
-    # TODO figure out why sorting chokes on the twitter data sometimes. 
+    # Not sure if sorting still chokes on the twitter data sometimes. 
     # Using unsorted data for now if it fails.
     begin
       @filtered_data.sort! { |a,b| b[3] <=> a[3] }
@@ -107,11 +107,11 @@ end
 
 post '/:username/:list' do
   if params[:description] == 'yes'
-  list_description
-  erb :description
+    list_description
+    erb :description
   else  
-  get_the_best(list_data)
-  erb :tweets
-end
+    get_the_best(list_data)
+    erb :tweets
+  end
 end
 
