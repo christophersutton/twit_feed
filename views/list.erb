@@ -13,13 +13,18 @@
 				</script>
 			</div>
 		</section>
-		<div id="tweets">
-			<%= erb :spinner %>
-			<script>
-			new Ajax.Updater('tweets', "#{params[:username]}/#{params[:list]}", { 
-				method: 'post'
-			});
-			</script>
+		<%= erb :spinner %>
+		<div id="tweets" style="display:none">
+				<script>
+				new Ajax.Updater('tweets', "#{params[:username]}/#{params[:list]}", { 
+					method: 'post',
+					onSuccess: function(){new Effect.Fade('spinner', {duration: 0.3 });
+					new Effect.Appear('tweets', {duration: 0.3 });
+					}
+				});
+				</script>
+			
+	
 				</div>	
 			</div>
 		</body>

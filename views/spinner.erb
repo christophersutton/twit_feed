@@ -1,7 +1,9 @@
-		<p class="loading">Fetching data from Twitter</p>
+
 		<div id="spinner">
-		</div>
 		<script>
 			var target = document.getElementById('spinner');
-			var spinner = new Spinner().spin(target);
+			var spinner = new Spinner().spin();
+			target.appendChild(spinner.el);
 		</script>
+		<p class="loading">Fetching data from Twitter</p>
+ 		</div>

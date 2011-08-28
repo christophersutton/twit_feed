@@ -172,10 +172,23 @@ h2 a {
 	text-decoration:none;
 }
 
-p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
+p.loading  {
+	font-size:1.5em;
+	color:#777;
+	float:left;
+	margin-left:35px;
+	margin-top:-10px;
+	}
 
  #content {
 	margin-left:20px;
+}
+
+#spinner {
+	float:left;
+	width:300px;
+	padding-left:180px;
+	margin-top:40px;
 }
 
 #tweets {
