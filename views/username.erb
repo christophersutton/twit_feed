@@ -2,6 +2,17 @@
 <body>
 	<%= erb :sidebar %>
 <div id="content">
+		<section class="list_header">
+			<div id="description" style="display:none">
+				<script>
+				new Ajax.Updater('description', "#{params[:username]}", { 
+					method: 'post', 
+					parameters: { description: 'yes' },
+					onSuccess: function(){new Effect.Appear('description', {duration: 0.3 });}
+				});
+				</script>
+			</div>
+		</section>
 	<div id="tweets">
 		<%= erb :spinner %>
 		<script>

@@ -12,9 +12,21 @@ def homepage_data
   end
 end
 
+def description
+  begin
+    user = Twitter.user("#{params[:username]}")
+    @username = user["screen_name"]
+    @user_description = user ["description"]
+  rescue
+  end
+end
+
 def list_description 
   begin
-    @description = Twitter.list("#{params[:username]}","#{params[:list]}")["description"]
+    list = Twitter.list("#{params[:username]}","#{params[:list]}")
+    @uri = list["uri"]
+    @full_name = list["full_name"]
+    @list_description = list["description"]
   rescue 
   end
 end
@@ -97,8 +109,13 @@ get '/:username' do
 end
 
 post '/:username' do
+  if params[:description] == 'yes'
+    description
+    erb :user_description
+  else
   get_the_best(username_data)
   erb :tweets
+end
 end
 
 get '/:username/:list' do
@@ -108,7 +125,7 @@ end
 post '/:username/:list' do
   if params[:description] == 'yes'
     list_description
-    erb :description
+    erb :list_description
   else  
     get_the_best(list_data)
     erb :tweets
