@@ -5,6 +5,4 @@ Take a Twitter timeline from a user or a list and return the best links, as rank
 #### TODO ####
 *  Clean up error pages for when twitter data is bad or missing
 *  Add general 404 and 500 pages
-*  Refactor the header / aside content 
-*  Add user description
 *  Add page caching

@@ -4,10 +4,13 @@
 <% @filtered_data.each do |a| %>
 <div class  = "tweet">
 	<div class = "photo"><img src="<%= a[4] %>" alt="" width="48" height="48" border="0" /></div>
-	<div class = "contents">	<p><a class="handle" href="http://twitter.com/<%= a[1] %>"><%= a[1] %> </a><span class ="name"><%= a[2] %></p>
+	<div class = "contents">	
+		<p><a class="handle" href="http://twitter.com/<%= a[1] %>"><%= a[1] %> </a><span class ="name"><%= a[2] %></p>
 		<p><%= a[0] %></p>
 	</div>	
-	<div class="clearfix"><p class  = "rt clearfix" style="zoom: 1; filter: alpha(opacity=<%= rt_highlight(a[3]) %>); opacity: <%= rt_highlight(a[3]) %>;"><%= rt_count(a[3]) %></p></div>
+	<div class="clearfix">
+		<p class  = "rt clearfix" style="zoom: 1; filter: alpha(opacity=<%= rt_highlight(a[3]) %>); opacity: <%= rt_highlight(a[3]) %>;"><%= rt_count(a[3]) %></p>
+	</div>
 </div>
 <% end %>
 <% end %>

@@ -18,7 +18,7 @@ def description
       user = Twitter.user("#{params[:username]}")
       @headline = "<a href=\"http://twitter.com/" + user["screen_name"] + "\">@" + user["screen_name"] + "</a>"
       @description = Twitter.auto_link(user["description"])
-    else
+    elsif params[:description] == 'list'
       list = Twitter.list("#{params[:username]}","#{params[:list]}")
       @headline = "<a href=\"http://twitter.com" + list["uri"] + "\">" + list["full_name"] + "</a>"
       @description = Twitter.auto_link(list["description"])
@@ -29,10 +29,10 @@ end
 
 def tweets 
   begin
-    if params[:type] == 'list'
-      Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
-    elsif params[:type] == 'user'
+    if params[:type] == 'user'
       Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
+    elsif params[:type] == 'list'
+      Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
     end
   rescue 
   end
@@ -57,6 +57,8 @@ def rt_count rt_num
   end
 end
 
+# Playing around with ways to differentiate RT counts - using this to set an 
+# opacity on the element right now
 def rt_highlight rt_count
   if rt_count == '100+'
     1

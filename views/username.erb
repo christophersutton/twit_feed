@@ -1,7 +1,7 @@
 <%= erb :head %>
 <body>
 	<%= erb :sidebar %>
-<div id="content">
+	<div id="content">
 		<section class="list_header">
 			<div id="description" style="display:none">
 				<script>
@@ -13,15 +13,15 @@
 				</script>
 			</div>
 		</section>
-	<div id="tweets">
-		<%= erb :spinner %>
-		<script>
+		<div id="tweets">
+			<%= erb :spinner %>
+			<script>
 			new Ajax.Updater('tweets', "#{params[:username]}", { 
 				method: 'post',
 				parameters: { type: 'user' },
-				
-				});
-		</script>
+
+			});
+			</script>
+		</div>
 	</div>
-</div>
 </body>
