@@ -154,12 +154,14 @@ ul, li {
 	margin-bottom:7px;
 }
 
-#description {
-	height:50px;
+.list_header {
+	height:58px;
 	margin:12px 0px 25px 0px;
 }
 
 #description p {
+	color:#999;
+	font-size:1.2em;
 	margin-top:5px;
 }
 

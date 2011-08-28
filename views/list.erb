@@ -1,21 +1,25 @@
 <%= erb :head %>
 <body>
 	<%= erb :sidebar %>
-<div id="content">
-	<div id="description">
-	<h2>	<a href="http://twitter.com/<%= params[:username] %>/<%= params[:list] %>">@<%= params[:username] %>/<%= params[:list] %></a></h2>
-	<script>
-		new Ajax.Updater('description', "#{params[:username]}/#{params[:list]}", { 
-		method: 'post', 
-		parameters: { description: 'yes' }
-		});
-	</script>
-	</div>
-	<div id="tweets">
-		<%= erb :spinner %>
-		<script>
-			new Ajax.Updater('tweets', "#{params[:username]}/#{params[:list]}", { method: 'post' });
-		</script>
-	</div>	
-</div>
-</body>
+	<div id="content">
+		<section class="list_header">
+			<div id="description" style="display:none">
+				<script>
+				new Ajax.Updater('description', "#{params[:username]}/#{params[:list]}", { 
+					method: 'post', 
+					parameters: { description: 'yes' },
+					onSuccess: function(){new Effect.Appear('description', {duration: 0.3 });}
+				});
+				</script>
+			</div>
+		</section>
+		<div id="tweets">
+			<%= erb :spinner %>
+			<script>
+			new Ajax.Updater('tweets', "#{params[:username]}/#{params[:list]}", { 
+				method: 'post'
+			});
+			</script>
+				</div>	
+			</div>
+		</body>
