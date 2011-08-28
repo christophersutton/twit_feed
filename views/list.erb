@@ -4,23 +4,12 @@
 	<div id="content">
 		<section class="list_header">
 			<div id="description" style="display:none">
-				<script>
-				new Ajax.Updater('description', "#{params[:username]}/#{params[:list]}", { 
-					method: 'post', 
-					parameters: { description: 'list' },
-					onSuccess: function(){new Effect.Appear('description', {duration: 0.3 });}
-				});
-				</script>
+				<script>listDescription()</script>
 			</div>
 		</section>
 		<div id="tweets">
 			<%= erb :spinner %>
-			<script>
-			new Ajax.Updater('tweets', "#{params[:username]}/#{params[:list]}", { 
-				method: 'post',
-				parameters: { type: 'list' }
-			});
-			</script>
+			<script>listTweets()</script>
 		</div>	
 	</div>
 </body>

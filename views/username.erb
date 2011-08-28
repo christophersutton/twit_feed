@@ -5,22 +5,14 @@
 		<section class="list_header">
 			<div id="description" style="display:none">
 				<script>
-				new Ajax.Updater('description', "#{params[:username]}", { 
-					method: 'post', 
-					parameters: { description: 'user' },
-					onSuccess: function(){new Effect.Appear('description', {duration: 0.3 });}
-				});
+			userDescription()
 				</script>
 			</div>
 		</section>
 		<div id="tweets">
 			<%= erb :spinner %>
 			<script>
-			new Ajax.Updater('tweets', "#{params[:username]}", { 
-				method: 'post',
-				parameters: { type: 'user' },
-
-			});
+		userTweets()
 			</script>
 		</div>
 	</div>
