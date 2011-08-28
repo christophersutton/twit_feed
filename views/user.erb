@@ -1,19 +1,12 @@
-<%= erb :head %>
-<body>
-	<%= erb :sidebar %>
 	<div id="content">
 		<section class="list_header">
 			<div id="description" style="display:none">
-				<script>
-			userDescription()
-				</script>
+				<script>userDescription()</script>
 			</div>
 		</section>
 		<div id="tweets">
 			<%= erb :spinner %>
-			<script>
-		userTweets()
-			</script>
+			<script>userTweets()</script>
 		</div>
 	</div>
-</body>
+

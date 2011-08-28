@@ -96,20 +96,20 @@ end
 
 post '/' do
   get_the_best(homepage_data)
-  erb :tweets
+  erb :tweets, :layout => false
 end
 
 get '/:username' do
-  erb :username
+  erb :user
 end
 
 post '/:username' do
   if params[:description] == 'user'
     description
-    erb :description
+    erb :description, :layout => false
   else
     get_the_best(tweets)
-    erb :tweets
+    erb :tweets, :layout => false
   end
 end
 
@@ -120,10 +120,10 @@ end
 post '/:username/:list' do
   if params[:description] == 'list'
     description
-    erb :description
+    erb :description, :layout => false
   else  
     get_the_best(tweets)
-    erb :tweets
+    erb :tweets, :layout => false
   end
 end
 
