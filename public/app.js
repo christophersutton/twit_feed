@@ -9,7 +9,6 @@ function listTweets(){	new Ajax.Updater('tweets', "#{params[:username]}/#{params
 	parameters: { type: 'list' }
 	});}
 
-
 function userDescription(){		new Ajax.Updater('description', "#{params[:username]}", { 
 	method: 'post', 
 	parameters: { description: 'user' },
@@ -20,6 +19,17 @@ function userDescription(){		new Ajax.Updater('description', "#{params[:username
 function userTweets(){			new Ajax.Updater('tweets', "#{params[:username]}", { 
 	method: 'post',
 	parameters: { type: 'user' },
+	});}
+	
+function homeTweets(){	new Ajax.Updater('tweets', "sutterbomb/topsecret", { 
+	method: 'post',
+	parameters: { type: 'list' }
+	});}
+	
+function homeDescription(){new Ajax.Updater('description', "sutterbomb/topsecret", { 
+	method: 'post', 
+	parameters: { description: 'list' },
+	onSuccess: function(){new Effect.Appear('description', {duration: 0.3 });}
 	});}
 
 //spinner from fgnass.github.com/spin.js
