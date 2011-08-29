@@ -5,13 +5,6 @@ require 'twitter'
 require 'twitter-text'
 include Twitter::Autolink
 
-def homepage_data 
-  begin
-    Twitter.list_timeline("sutterbomb","topsecret", options = {:per_page => 200, :include_entities => true})
-  rescue 
-  end
-end
-
 def description
   begin
     if params[:description] == 'user'
@@ -94,13 +87,12 @@ get '/' do
   erb :home
 end  
 
-post '/' do
-  get_the_best(homepage_data)
-  erb :tweets, :layout => false
-end
-
 get '/:username' do
   erb :user
+end
+
+get '/:username/:list' do
+  erb :list
 end
 
 post '/:username' do
@@ -111,10 +103,6 @@ post '/:username' do
     get_the_best(tweets)
     erb :tweets, :layout => false
   end
-end
-
-get '/:username/:list' do
-  erb :list
 end
 
 post '/:username/:list' do
