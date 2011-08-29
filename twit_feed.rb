@@ -25,7 +25,7 @@ def tweets
     if params[:type] == 'user'
       Twitter.user_timeline("#{params[:username]}", options = {:count => 50, :include_entities => true})
     elsif params[:type] == 'list'
-      Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 200, :include_entities => true})
+      Twitter.list_timeline("#{params[:username]}","#{params[:list]}", options = {:per_page => 100, :include_entities => true})
     end
   rescue 
   end
@@ -51,12 +51,12 @@ def rt_count rt_num
 end
 
 # Playing around with ways to differentiate RT counts - using this to set an 
-# opacity on the element right now
+# opacity on the element for now, but needs work
 def rt_highlight rt_count
   if rt_count == '100+'
     1
   else
-    rt_count.to_f / 100
+    (rt_count.to_f * 2) / 100
   end
 end
 
