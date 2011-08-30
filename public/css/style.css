@@ -116,6 +116,7 @@ body, select, input, textarea {
   font-family: droid-sans-1, droid-sans2, helvetica, arial, sans-serif;
 }
 
+p {font-size:1.1em;}
 a:hover, a:active { outline: none; }
 a { color: #00a3c3; }
 a:hover { color: #144e64; }
@@ -158,14 +159,15 @@ ul, li {
 	margin:12px 0px 25px 0px;
 }
 
+#description {
+	color:#999;
+}
 h2 {
 	font-size:2em;
 	margin-top:11px;
 }
 
 #description p {
-	color:#999;
-	font-size:1.2em;
 	margin-top:5px;
 }
 
@@ -194,7 +196,6 @@ p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
 }
 
 .handle {text-decoration:none;}
-a.username:before {color:black;}
 .photo {float:left;}
 .handle {font-weight:bold;font-size:1.3em;}
 .name {color:#777;}
