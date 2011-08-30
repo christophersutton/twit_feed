@@ -118,21 +118,18 @@ body, select, input, textarea {
 
 p {font-size:1.1em;}
 a:hover, a:active { outline: none; }
-a { color: #00a3c3; }
+a { color: #00a3c3; text-decoration:none;}
 a:hover { color: #144e64; }
 
-h1 {
+h1 a {
 	font-size:3em;
+	color:rgb(60,60,60);
 	}
 
 aside {
 	width:252;
 	float:left;
 	margin-right:24px;
-}
-
-aside a {
-	text-decoration:none;
 }
 
 aside p {
@@ -173,11 +170,9 @@ h2 {
 
 #description a {
 	color:#999;
-	text-decoration:none;
 }
 
 #description a:hover { color: #144e64; }
-
 
 p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
 
@@ -185,10 +180,25 @@ p.loading  {text-align:center;margin:30px;font-size:1.5em;color:#777;}
 	margin-left:20px;
 }
 
-#tweets {
+#tweets, #about {
 	float:left;
 	width:620px;
 }
+
+#about p {
+	font-size:1.3em;
+	margin-bottom:20px;
+}
+
+p.about {margin-top:30px;}
+
+p.about a {
+	color:#999;
+}
+
+p.about a:hover { 
+	color: #144e64; 
+	}
 
 .tweet {
 	margin-bottom:30px;
@@ -213,6 +223,7 @@ p.rt  {
 	padding:15px;
 	font-size:1.1em;
 	}
+
 
 /*		Tablet Layout: 768px.
 		Gutters: 24px.

@@ -87,6 +87,10 @@ get '/' do
   erb :home
 end  
 
+get '/about' do
+  erb :about
+end  
+
 get '/:username' do
   erb :user
 end
