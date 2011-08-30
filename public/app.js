@@ -1,22 +1,22 @@
-function listDescription(){new Ajax.Updater('description', "#{params[:username]}/#{params[:list]}", { 
+function listDescription(){new Ajax.Updater('description', "", { 
 	method: 'post', 
 	parameters: { description: 'list' },
 	onSuccess: function(){new Effect.Appear('description', {duration: 0.3 });}
 	});}
 
-function listTweets(){	new Ajax.Updater('tweets', "#{params[:username]}/#{params[:list]}", { 
+function listTweets(){	new Ajax.Updater('tweets', "", { 
 	method: 'post',
 	parameters: { type: 'list' }
 	});}
 
-function userDescription(){		new Ajax.Updater('description', "#{params[:username]}", { 
+function userDescription(){		new Ajax.Updater('description', "", { 
 	method: 'post', 
 	parameters: { description: 'user' },
 	onSuccess: function(){new Effect.Appear('description', {duration: 0.3 });}
 	});}
 
 
-function userTweets(){			new Ajax.Updater('tweets', "#{params[:username]}", { 
+function userTweets(){			new Ajax.Updater('tweets', "", { 
 	method: 'post',
 	parameters: { type: 'user' },
 	});}
