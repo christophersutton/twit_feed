@@ -65,18 +65,19 @@ def get_the_best tweets
   unless tweets.nil?
     tweets.each do |i|
       unless i["entities"]["urls"].empty? or i["retweet_count"] == 0
-        @filtered_data.push( [ Twitter.auto_link(i["text"], options = {:username_class => 'test'}), 
-        i["user"]["screen_name"], 
-        i["user"]["name"], 
-        rt_to_num(i["retweet_count"]),
-        i["user"]["profile_image_url"],
-        ] )
+        @filtered_data.push( Hash[ 
+          "text", Twitter.auto_link(i["text"]), 
+          "username", i["user"]["screen_name"], 
+          "name", i["user"]["name"], 
+          "rt_num", rt_to_num(i["retweet_count"]), 
+          "image_url", i["user"]["profile_image_url"]
+        ])
       end
     end
     # Not sure if sorting still chokes on the twitter data sometimes. 
     # Using unsorted data for now if it fails.
     begin
-      @filtered_data.sort! { |a,b| b[3] <=> a[3] }
+      @filtered_data.sort! { |a,b| b["rt_num"] <=> a["rt_num"] }
     rescue
       @filtered_data
     end  
